@@ -25,10 +25,16 @@ import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_MODE;
 import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_MODE_CLOUDFLARE;
 import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_MODE_ADGUARD;
+import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_MODE_OPEN_DNS;
+import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_MODE_CLEANBROWSING;
+import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_MODE_QUAD9;
 import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
 import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_SPECIFIER;
 import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_SPECIFIER_CLOUDFLARE;
 import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_SPECIFIER_ADGUARD;
+import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_SPECIFIER_OPEN_DNS;
+import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_SPECIFIER_CLEANBROWSING;
+import static android.net.ConnectivitySettingsManager.PRIVATE_DNS_SPECIFIER_QUAD9;
 import static android.net.resolv.aidl.IDnsResolverUnsolicitedEventListener.VALIDATION_RESULT_FAILURE;
 import static android.net.resolv.aidl.IDnsResolverUnsolicitedEventListener.VALIDATION_RESULT_SUCCESS;
 
@@ -151,6 +157,18 @@ public class DnsManager {
 
         if (PRIVATE_DNS_MODE_ADGUARD == mode) {
             return new PrivateDnsConfig(PRIVATE_DNS_SPECIFIER_ADGUARD, null);
+        }
+
+        if (PRIVATE_DNS_MODE_OPEN_DNS == mode) {
+            return new PrivateDnsConfig(PRIVATE_DNS_SPECIFIER_OPEN_DNS, null);
+        }
+        
+        if (PRIVATE_DNS_MODE_CLEANBROWSING == mode) {
+            return new PrivateDnsConfig(PRIVATE_DNS_SPECIFIER_CLEANBROWSING, null);
+        }
+        
+        if (PRIVATE_DNS_MODE_QUAD9 == mode) {
+            return new PrivateDnsConfig(PRIVATE_DNS_SPECIFIER_QUAD9, null);
         }
 
         return new PrivateDnsConfig(useTls);
