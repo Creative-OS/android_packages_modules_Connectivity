@@ -364,6 +364,24 @@ public class ConnectivitySettingsManager {
             ConnectivitySettingsUtils.PRIVATE_DNS_MODE_ADGUARD;
 
     /**
+     * @hide
+     */
+    public static final int PRIVATE_DNS_MODE_OPEN_DNS =
+            ConnectivitySettingsUtils.PRIVATE_DNS_MODE_OPEN_DNS;
+
+    /**
+     * @hide
+     */
+    public static final int PRIVATE_DNS_MODE_CLEANBROWSING =
+            ConnectivitySettingsUtils.PRIVATE_DNS_MODE_CLEANBROWSING;
+
+    /**
+     * @hide
+     */
+    public static final int PRIVATE_DNS_MODE_QUAD9 =
+            ConnectivitySettingsUtils.PRIVATE_DNS_MODE_QUAD9;
+
+    /**
      * One of the private DNS modes that indicates the private DNS mode is automatic, which
      * will try to use the current DNS as private DNS.
      */
@@ -389,12 +407,30 @@ public class ConnectivitySettingsManager {
      */
     public static final String PRIVATE_DNS_SPECIFIER_ADGUARD = "dns.adguard.com";
 
+    /**
+     * @hide
+     */
+    public static final String PRIVATE_DNS_SPECIFIER_OPEN_DNS = "dns.opendns.com";
+
+    /**
+     * @hide
+     */
+    public static final String PRIVATE_DNS_SPECIFIER_CLEANBROWSING = "security-filter-dns.cleanbrowsing.org";
+
+    /**
+     * @hide
+     */
+    public static final String PRIVATE_DNS_SPECIFIER_QUAD9 = "dns.quad9.net";
+
     /** @hide */
     @Retention(RetentionPolicy.SOURCE)
     @IntDef(value = {
             PRIVATE_DNS_MODE_OFF,
             PRIVATE_DNS_MODE_CLOUDFLARE,
             PRIVATE_DNS_MODE_ADGUARD,
+            PRIVATE_DNS_MODE_OPEN_DNS,
+            PRIVATE_DNS_MODE_CLEANBROWSING,
+            PRIVATE_DNS_MODE_QUAD9,
             PRIVATE_DNS_MODE_OPPORTUNISTIC,
             PRIVATE_DNS_MODE_PROVIDER_HOSTNAME,
     })
@@ -833,6 +869,9 @@ public class ConnectivitySettingsManager {
         if (!(mode == PRIVATE_DNS_MODE_OFF
                 || mode == PRIVATE_DNS_MODE_CLOUDFLARE
                 || mode == PRIVATE_DNS_MODE_ADGUARD
+                || mode == PRIVATE_DNS_MODE_OPEN_DNS
+                || mode == PRIVATE_DNS_MODE_CLEANBROWSING
+                || mode == PRIVATE_DNS_MODE_QUAD9
                 || mode == PRIVATE_DNS_MODE_OPPORTUNISTIC
                 || mode == PRIVATE_DNS_MODE_PROVIDER_HOSTNAME)) {
             throw new IllegalArgumentException("Invalid private dns mode");
